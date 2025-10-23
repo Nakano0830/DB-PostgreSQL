@@ -9,8 +9,7 @@ INSERT INTO
   s_users (id, name, age)
 VALUES
   (1, 'Alice', 20),
-  (2, 'Bob', 25),
-  (3, 'Mike', 27);
+  (2, 'Bob', 25);
 
 -- すべてのレコードを抽出する
 SELECT
