@@ -1,15 +1,16 @@
+START TRANSACTION;
+
+INSERT INTO
+    s_users (name, id) -- カラムの順序に注目
+VALUES
+    ('Carol', 3), -- 指定したカラム順に対応して値を記述
+    ('Dave', 4),
+    ('Elen', 5);
+
 SELECT
-    id,
-    name,
-    job,
-    level
+    *
 FROM
-    s_characters
-ORDER BY
-    CASE
-        WHEN job = 'Priest' OR
-        job = 'Wizard' THEN 1
-        ELSE 2
-    END ASC,
-    job,
-    level DESC;
+    s_users;
+
+-- 確認
+ROLLBACK;
