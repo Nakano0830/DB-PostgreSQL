@@ -1,16 +1,10 @@
-START TRANSACTION;
-
-INSERT INTO
-    s_users (name, id) -- カラムの順序に注目
-VALUES
-    ('Carol', 3), -- 指定したカラム順に対応して値を記述
-    ('Dave', 4),
-    ('Elen', 5);
-
 SELECT
-    *
+    id,
+    name,
+    last_login_at
 FROM
-    s_users;
-
--- 確認
-ROLLBACK;
+    s_characters
+WHERE
+    last_login_at BETWEEN '2025-7-1' AND '2025-7-31'
+ORDER BY
+    last_login_at;
