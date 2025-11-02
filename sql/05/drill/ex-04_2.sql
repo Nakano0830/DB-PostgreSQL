@@ -1,0 +1,12 @@
+START TRANSACTION;
+
+SELECT
+    job,
+    COUNT(*) AS "num",
+    ROUND(AVG(level), 1) AS "avg_lv"
+FROM
+    s_characters
+GROUP BY
+    job
+ORDER BY
+    avg_lv DESC;

@@ -1,13 +1,14 @@
 START TRANSACTION;
 
--- 更新前のレコードを確認 (省略)
--- 更新処理
 UPDATE s_characters
 SET
-    guild = NULL,
-    job = 'Exile'
+    buff = 0.30
 WHERE
-    id IN (1, 2);
+    level < 40
+RETURNING
+    id,
+    name,
+    level,
+    buff;
 
--- 更新後のレコードを確認 (省略)
 ROLLBACK;
