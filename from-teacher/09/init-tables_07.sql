@@ -4,6 +4,8 @@ DROP TABLE IF EXISTS p_users;
 
 DROP TABLE IF EXISTS p_jobs;
 
+START TRANSACTION;
+
 -- テーブル定義・作成
 CREATE TABLE p_jobs (
   job_id INTEGER PRIMARY KEY,
@@ -23,8 +25,8 @@ CREATE TABLE p_characters (
   character_id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   name VARCHAR(16) NOT NULL,
   level INTEGER NOT NULL,
-  job_id INTEGER NOT NULL REFERENCES p_jobs (job_id), -- FK制約
-  user_id INTEGER NOT NULL REFERENCES p_users (user_id) -- FK制約
+  job_id INTEGER NOT NULL REFERENCES p_jobs (job_id) ON DELETE CASCADE, -- FK制約
+  user_id INTEGER NOT NULL REFERENCES p_users (user_id) ON DELETE CASCADE -- FK制約
 );
 
 -- レコード挿入
@@ -52,6 +54,28 @@ VALUES
   ('Charlie', 33, 6, 1);
 
 -- レコードの確認
-SELECT * FROM p_jobs;
-SELECT * FROM p_users;
-SELECT * FROM p_characters;
+SELECT
+  *
+FROM
+  p_jobs;
+
+SELECT
+  *
+FROM
+  p_users;
+
+SELECT
+  *
+FROM
+  p_characters;
+
+DELETE FROM p_jobs
+WHERE
+  job_id = 5;
+
+SELECT
+  *
+FROM
+  p_jobs;
+
+ROLLBACK;
