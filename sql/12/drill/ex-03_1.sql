@@ -1,0 +1,3 @@
+START TRANSACTION;
+
+INSERT x_trans
